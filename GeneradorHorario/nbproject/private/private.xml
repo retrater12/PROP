@@ -3,13 +3,16 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/usuario/Desktop/UNI/GeneradorHorario/src/capaDominio/FranjaHoraria.java</file>
-            <file>file:/C:/Users/usuario/Desktop/UNI/GeneradorHorario/src/capaDatos/Aula.java</file>
-            <file>file:/C:/Users/usuario/Desktop/UNI/GeneradorHorario/src/capaDominio/Asignacion.java</file>
-            <file>file:/C:/Users/usuario/Desktop/UNI/GeneradorHorario/src/capaDatos/GestionDatos.java</file>
-            <file>file:/C:/Users/usuario/Desktop/UNI/GeneradorHorario/src/capaDominio/controladorDominio.java</file>
-            <file>file:/C:/Users/usuario/Desktop/UNI/GeneradorHorario/src/capaDominio/CjtAsignaciones.java</file>
-            <file>file:/C:/Users/usuario/Desktop/UNI/GeneradorHorario/src/capaDominio/Restricciones.java</file>
+            <file>file:/D:/UNI%202018-2019/PROP/GeneradorHorario/src/testDatos/AsignaturaTest.java</file>
+            <file>file:/D:/UNI%202018-2019/PROP/GeneradorHorario/src/testDominio/controladorDominioTest.java</file>
+            <file>file:/D:/UNI%202018-2019/PROP/GeneradorHorario/src/testDatos/GestionDatosTest.java</file>
+            <file>file:/D:/UNI%202018-2019/PROP/GeneradorHorario/src/testDominio/CjtAsignacionTest.java</file>
+            <file>file:/D:/UNI%202018-2019/PROP/GeneradorHorario/src/testDatos/RequisitoTest.java</file>
+            <file>file:/D:/UNI%202018-2019/PROP/GeneradorHorario/src/testDominio/RestriccionesTest.java</file>
+            <file>file:/D:/UNI%202018-2019/PROP/GeneradorHorario/src/testDatos/AulaTest.java</file>
+            <file>file:/D:/UNI%202018-2019/PROP/GeneradorHorario/src/testDatos/MateriaTest.java</file>
+            <file>file:/D:/UNI%202018-2019/PROP/GeneradorHorario/src/testDominio/AsignacionTest.java</file>
+            <file>file:/D:/UNI%202018-2019/PROP/GeneradorHorario/src/testDominio/FranjaHorariaTest.java</file>
         </group>
     </open-files>
 </project-private>
