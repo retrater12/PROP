@@ -81,13 +81,13 @@ public class controladorDominio {
         }
         else{
             boolean b = false;
-            capaDatos.Asignatura Aux = A.get(i); // Cojo una asignatura. 
+            capaDatos.Asignatura Aux = A.get(i++); // Cojo una asignatura. 
             ArrayList<FHaula> ArrayFHaula = new ArrayList<>();
             ArrayFHaula = PosiblesFH(Aux);// Para cada Asignatura me devuelve un array con la lista de franjas horarias donde la podria colocar junto con el Aula a la que iria..
             for (int j = 0; j < ArrayFHaula.size() && !b; ++j){
                 Asignacion Asig = new Asignacion(ArrayFHaula.get(j).getAula(), Aux, ArrayFHaula.get(j).getFH()); // Primero crear asignacion 
                 CJTA.addelement(Asig);
-                b = Generar_r(A, i++);// hacer recursividad
+                b = Generar_r(A, i);// hacer recursividad
                 if (!b) CJTA.delelement();    // Eliminar Asignacion (ya que significara que por esta rama no ha acabado )
                 // Hay que controlar que no cree todas las ramas, por ejemplo haciendo que la funcion devuelva un bool, true cuando llegue al final y false mientras no.  
             }
