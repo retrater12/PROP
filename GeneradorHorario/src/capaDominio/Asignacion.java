@@ -23,4 +23,17 @@ public class Asignacion {
         this.asignatura = asignatura;
         this.franjaHoraria = franjaHoraria;
     }
+    
+    public FranjaHoraria get_franjahoraria(){
+        return franjaHoraria;
+    }
+    
+    public capaDatos.Aula get_Aula(){
+        return aula;
+    }
+    
+    public capaDatos.Asignatura get_Asignatura() {
+        return asignatura;
+    }
+    
 }

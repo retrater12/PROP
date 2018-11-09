@@ -151,7 +151,7 @@ public class GestionDatos {
 
     
        
-    
+/* MÉTODOS PRIVADOS */
     private Asignatura.TipusClase char_to_tipusClase(char c){
         if (c == 'T') return Asignatura.TipusClase.T;
         if (c == 'P') return Asignatura.TipusClase.P;
@@ -186,4 +186,17 @@ public class GestionDatos {
     }
     //pre: existeix una materia en m amb les sigles passades per parametre
     //post: retorna la materia que te com a clau primaria siglas
+
+    
+    
+/* METODOS PUBLICOS */
+    public ArrayList<Asignatura> getAsignaturas(){
+        return cjt_asignatures;
+    }
+    
+   public ArrayList<Aula> getAules(){
+       return cjt_aules;
+   }
+
+
 }

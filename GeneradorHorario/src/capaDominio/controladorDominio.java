@@ -5,8 +5,6 @@
  */
 package capaDominio;
 
-import capaDatos.Asignatura;
-//import capaDominio.FranjaHoraria.Dia;
 import java.util.ArrayList;
 
 
@@ -19,18 +17,31 @@ public class controladorDominio {
     private capaDatos.GestionDatos gestionDatos2;
     private Restricciones rest;
     private capaDominio.CjtAsignaciones CJTA;
- //   private CjtAsignaciones cjtAssigs;
     
-    public controladorDominio() {
-        System.out.println("CARGADO CONTROLADOR DOMINIO");
+    
+    
+    public controladorDominio() { //solamente cargará los datos (así podemos gestionar en la segunda entrega el poder añadir o quitar nuevas restricciones facilmente)
         gestionDatos2 = new capaDatos.GestionDatos();
         CJTA = new capaDominio.CjtAsignaciones();
     }
     
-    private boolean cumpleRestricciones(capaDatos.Asignatura Aux, capaDominio.Asignacion.FranjaHoraria FH){
+    public CjtAsignaciones generar_horario(){ //con los datos cargados de los txt (y en versiones posteriores añadidos dinamicamente) construimos un horario válido
+        
+        
+        
+        
+        
+        return CJTA;
+    }
+    
+    
+    
+    
+    private boolean cumpleRestricciones(capaDatos.Asignatura Aux, FranjaHoraria FH){
         
         return true;   
     }
+    
     private FranjaHoraria.Dia Dia_semana(int dia){
         
         if (dia == 0) return FranjaHoraria.Dia.LUNES;
@@ -39,6 +50,7 @@ public class controladorDominio {
         else if (dia == 3) return FranjaHoraria.Dia.JUEVES;
         else return FranjaHoraria.Dia.VIERNES;
     }
+    
     private ArrayList<FranjaHoraria>  PosiblesFH(capaDatos.Asignatura A){
         ArrayList<FranjaHoraria> ArrayFH = new ArrayList<>();
         int HorasC = A.gethoraClase(); 
@@ -46,7 +58,7 @@ public class controladorDominio {
             for (int horai = 8; (horai+HorasC) <= 20;){
                 FranjaHoraria FH = new FranjaHoraria(horai,horai+HorasC, Dia_semana(diai));
                 capaDatos.Aula aula = new capaDatos.Aula();
-                if (Comprueba_Restricciones(A, FH, CJTA)){//Funcion que dice si podria añadir la asignatura A en la FH.  
+                if (rest.comprueba_Restricciones(A, FH, CJTA, aula)){//Funcion que dice si podria añadir la asignatura A en la FH.  
                     ArrayFH.add(FH);
                     // Hay que añadir a que clase ira a parte de la FH. Supongo que creando un struck con FranjaHoraria y Aula ya estara.
                 }
@@ -58,7 +70,7 @@ public class controladorDominio {
     }
   
             
-    private void Generar_r(ArrayList<capaDatos.Asignatura> A, int i, capaDominio.Asignacion.FranjaHoraria FH){
+    private void Generar_r(ArrayList<capaDatos.Asignatura> A, int i, FranjaHoraria FH){
         // i = numero de asignatura que estoy visitando en el array A.
         if (i >= A.size()){
             
@@ -68,7 +80,7 @@ public class controladorDominio {
             ArrayList<FranjaHoraria> ArrayFH = new ArrayList<>();
             ArrayFH = PosiblesFH(Aux);// Para cada Asignatura me devuelve un array con la lista de franjas horarias donde la podria colocar.
             for (int j = 0; j < ArrayFH.size(); ++j){
-                Asignacion Asig = new Asignacion(); 
+                Asignacion Asig; //no puede hacer new, sin parametros, debes hacer new Asignacion(asignatura, aula, franjahoraria)
                 // Primero crear asignacion 
                 // hacer recursividad
                 // Eliminar Asignacion (ya que significara que por esta rama no ha acabado )
@@ -81,10 +93,11 @@ public class controladorDominio {
         
         
     }
+    
     private capaDominio.CjtAsignaciones Generar(){
         ArrayList<capaDatos.Asignatura> A = gestionDatos2.getAsignaturas();
         
-        Generar_r(A, 0);
+        //Generar_r(A, 0);
         
         
         

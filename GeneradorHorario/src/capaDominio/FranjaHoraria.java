@@ -36,4 +36,7 @@ package capaDominio;
             return dia;
         }
         
+        public int unificar_values(){
+            return (dia.ordinal() * 12 + (HoraIni - 8));
+        }
     }
