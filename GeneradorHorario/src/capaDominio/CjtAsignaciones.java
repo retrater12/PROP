@@ -16,6 +16,20 @@ public class CjtAsignaciones {
 
     private ArrayList<Asignacion> cjt_asignaciones; 
 
-    
-    
+    public CjtAsignaciones(){
+        
+    }
+    public ArrayList<Asignacion> getCjtA(){
+        return cjt_asignaciones;
+    }
+    public void addelement(Asignacion A){
+        cjt_asignaciones.add(A);
+    }
+    public void delelement(){
+        ArrayList<Asignacion> Aux = new ArrayList<>();
+        for (int i = 0; i < cjt_asignaciones.size()-1; ++i){
+            Aux.add(cjt_asignaciones.get(i));
+        }
+        cjt_asignaciones = Aux;
+    }
 }

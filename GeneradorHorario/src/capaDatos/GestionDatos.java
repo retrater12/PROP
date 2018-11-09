@@ -184,6 +184,15 @@ public class GestionDatos {
         }        
         return null;
     }
+            
     //pre: existeix una materia en m amb les sigles passades per parametre
     //post: retorna la materia que te com a clau primaria siglas
+    
+    public ArrayList<Asignatura> getcjt_asignatures(){
+        return cjt_asignatures;
+    }
+
+    public ArrayList<Aula> getcjt_aules(){
+        return cjt_aules;
+    }
 }
