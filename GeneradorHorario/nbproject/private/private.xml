@@ -3,13 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Sergi/Desktop/PROP-Restricciones/GeneradorHorario/src/capaDatos/Asignatura.java</file>
-            <file>file:/C:/Users/Sergi/Desktop/PROP-Restricciones/GeneradorHorario/src/capaDominio/controladorDominio.java</file>
-            <file>file:/C:/Users/Sergi/Desktop/PROP-Restricciones/GeneradorHorario/src/capaDominio/CjtAsignaciones.java</file>
-            <file>file:/C:/Users/Sergi/Desktop/PROP-Restricciones/GeneradorHorario/src/capaDominio/FranjaHoraria.java</file>
-            <file>file:/C:/Users/Sergi/Desktop/PROP-Restricciones/GeneradorHorario/src/capaDominio/Asignacion.java</file>
-            <file>file:/C:/Users/Sergi/Desktop/PROP-Restricciones/GeneradorHorario/src/generadorhorario/GeneradorHorario.java</file>
-            <file>file:/C:/Users/Sergi/Desktop/PROP-Restricciones/GeneradorHorario/src/capaDominio/Restricciones.java</file>
+            <file>file:/D:/UNI%202018-2019/PROP/GeneradorHorario/src/capaDominio/controladorDominio.java</file>
+            <file>file:/D:/UNI%202018-2019/PROP/GeneradorHorario/src/capaDominio/Asignacion.java</file>
+            <file>file:/D:/UNI%202018-2019/PROP/GeneradorHorario/src/capaDominio/CjtAsignaciones.java</file>
+            <file>file:/D:/UNI%202018-2019/PROP/GeneradorHorario/src/capaDominio/Restricciones.java</file>
+            <file>file:/D:/UNI%202018-2019/PROP/GeneradorHorario/src/generadorhorario/GeneradorHorario.java</file>
+            <file>file:/D:/UNI%202018-2019/PROP/GeneradorHorario/src/capaDatos/GestionDatos.java</file>
+            <file>file:/D:/UNI%202018-2019/PROP/GeneradorHorario/src/capaDatos/Asignatura.java</file>
         </group>
     </open-files>
 </project-private>

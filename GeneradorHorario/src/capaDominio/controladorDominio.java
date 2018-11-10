@@ -66,7 +66,8 @@ public class controladorDominio {
                     ArrayFHaula.add(fhaula);
                     // Hay que añadir a que clase ira a parte de la FH. Supongo que creando un struck con FranjaHoraria y Aula ya estara.
                 }
-                if (HorasC%2 == 0) horai += 2;// Si la hora dura dos horas que busque FH pares
+                if (HorasC == 2) horai += 2;// Si la hora dura dos horas que busque FH pares
+                else if (HorasC == 3) horai += 3;
                 else ++horai;
             }
         }        
@@ -84,8 +85,11 @@ public class controladorDominio {
             capaDatos.Asignatura Aux = A.get(i++); // Cojo una asignatura. 
             ArrayList<FHaula> ArrayFHaula = new ArrayList<>();
             ArrayFHaula = PosiblesFH(Aux);// Para cada Asignatura me devuelve un array con la lista de franjas horarias donde la podria colocar junto con el Aula a la que iria..
-            for (int j = 0; j < ArrayFHaula.size() && !b; ++j){
+            int tam = 0;
+            if (ArrayFHaula != null) tam = ArrayFHaula.size();
+            for (int j = 0; j < tam && !b; ++j){
                 Asignacion Asig = new Asignacion(ArrayFHaula.get(j).getAula(), Aux, ArrayFHaula.get(j).getFH()); // Primero crear asignacion 
+                                
                 CJTA.addelement(Asig);
                 b = Generar_r(A, i);// hacer recursividad
                 if (!b) CJTA.delelement();    // Eliminar Asignacion (ya que significara que por esta rama no ha acabado )

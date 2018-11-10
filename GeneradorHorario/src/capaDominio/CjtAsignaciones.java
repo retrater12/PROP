@@ -19,13 +19,21 @@ public class CjtAsignaciones {
     private ArrayList<Asignacion> cjt_asignaciones; 
 
     public CjtAsignaciones(){
-        
+        ArrayList<Asignacion> asig = new ArrayList<>();
+        cjt_asignaciones = asig;
     }
+    public CjtAsignaciones(ArrayList<Asignacion> asig){
+        cjt_asignaciones = asig;
+    }
+    
+    
     public ArrayList<Asignacion> getCjtA(){
         return cjt_asignaciones;
     }
     public void addelement(Asignacion A){
-        cjt_asignaciones.add(A);
+        
+            cjt_asignaciones.add(A);
+
     }
     public void delelement(){
         ArrayList<Asignacion> Aux = new ArrayList<>();
