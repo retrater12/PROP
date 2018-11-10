@@ -14,7 +14,8 @@ package capaDatos;
 public class Asignatura {
 
     public int gethoraClase() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return horaClase;
     }
     
      public enum TipusClase {

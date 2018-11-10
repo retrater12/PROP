@@ -7,6 +7,8 @@ package capaDominio;
 
 import capaDominio.Asignacion;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  *
@@ -32,4 +34,19 @@ public class CjtAsignaciones {
         }
         cjt_asignaciones = Aux;
     }
+    
+     public Map<Integer, ArrayList<Asignacion>> get_asignaciones_ordenadas (){
+        Map<Integer, ArrayList<Asignacion>> m = new HashMap<Integer, ArrayList<Asignacion>>();  
+        for (int i = 0; i < cjt_asignaciones.size(); i++){
+            int val = cjt_asignaciones.get(i).getFranjaHoraria().unificar_values();
+            for (int j = 0; j < cjt_asignaciones.get(i).getAsignatura().gethoraClase(); j++){
+                if (!m.containsKey(val+j))
+                    m.put(val+j, new ArrayList<>());
+                m.get(val+j).add(cjt_asignaciones.get(i));      
+            }
+        }           
+        return (HashMap<Integer, ArrayList<Asignacion>>) m;
+    }    
+    //pre: el conjunt assignacions ha estat montat
+    //post: es retorna un map ordenat amb les clases segons el dia i l'hora
 }

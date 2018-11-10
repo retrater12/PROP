@@ -94,7 +94,7 @@ public class controladorDominio {
              return b;   
         }
     }
-    private capaDominio.CjtAsignaciones Generar(){
+    public capaDominio.CjtAsignaciones Generar(){
         ArrayList<capaDatos.Asignatura> A = gestionDatos2.getcjt_asignatures();
         Generar_r(A, 0);
         return CJTA;
