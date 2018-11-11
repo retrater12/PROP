@@ -52,7 +52,7 @@ public class Restricciones {
     
     private boolean pertMismoGrupo(capaDatos.Asignatura a1, capaDatos.Asignatura a2){
         return a1.getMat().getSiglas() == a2.getMat().getSiglas() && 
-                (int)a1.getGrupo()/10 == (int)a2.getGrupo()/10 &&
+                (((int)a1.getGrupo()/10 == (int)a2.getGrupo()/10) ||  (a1.getGrupo()%10==0 && a2.getGrupo()%10==0) ) &&
                 (a1.getGrupo()%10==a2.getGrupo()%10 || 
                 a1.getGrupo()%10!=a2.getGrupo()%10 &&(a1.getGrupo()%10==0 || a2.getGrupo()%10==0));
     }
