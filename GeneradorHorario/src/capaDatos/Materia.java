@@ -54,5 +54,19 @@ public class Materia {
     }
     //Pre: cert
     //post: devuelve siglas
+    
+    public int getNivel(){
+        return nivel;
+    }
+    
+    public ArrayList<Requisito> getReqs(){
+        return reqs;
+    }
+
+    @Override
+    public String toString() {
+        return "Materia{" + "nom=" + nom + ", siglas=" + siglas + ", nivel=" + nivel + ", especialitat=" + especialitat + ", reqs=" + reqs + '}';
+    }
      
+    
 }

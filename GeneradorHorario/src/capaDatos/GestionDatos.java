@@ -35,7 +35,7 @@ public class GestionDatos {
         FileReader fr = null;
         BufferedReader br = null;
         try {
-            prueba = new File("ArchivosExternos/Assignatures.txt");
+            prueba = new File("ArchivosExternos/asig.txt");
             fr = new FileReader(prueba);
             br = new BufferedReader(fr);
             ArrayList<Materia> m = new ArrayList<Materia>();
@@ -184,6 +184,22 @@ public class GestionDatos {
         }        
         return null;
     }
+            
     //pre: existeix una materia en m amb les sigles passades per parametre
     //post: retorna la materia que te com a clau primaria siglas
+    
+    public ArrayList<Asignatura> getcjt_asignatures(){
+        return cjt_asignatures;
+    }
+
+    public ArrayList<Aula> getcjt_aules(){
+        return cjt_aules;
+    }
+
+    @Override
+    public String toString() {
+        return "GestionDatos{" + "cjt_aules=" + cjt_aules + '}';
+    }
+    
+    
 }
