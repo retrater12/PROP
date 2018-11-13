@@ -21,9 +21,45 @@ public class Aula {
         this.tipusClase = tipusClase;
     }
 
+    public boolean equals(Aula A){
+        return A.getCodigo().equals(codigo) && A.getCapacidad() == capacidad 
+                && A.getTipusClase().equals(tipusClase);
+    }
+    
     public Aula() {
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+    public String getCodigo() {
+        return codigo;
+    }
+
+    public void setCodigo(String codigo) {
+        this.codigo = codigo;
+    }
+
+    public int getCapacidad() {
+        return capacidad;
+    }
+
+    public void setCapacidad(int capacidad) {
+        this.capacidad = capacidad;
+    }
+
+    public Asignatura.TipusClase getTipusClase() {
+        return tipusClase;
+    }
+
+    public void setTipusClase(Asignatura.TipusClase tipusClase) {
+        this.tipusClase = tipusClase;
+    }
+
+    @Override
+    public String toString() {
+        return "Aula{" + "codigo=" + codigo + ", capacidad=" + capacidad + ", tipusClase=" + tipusClase + '}';
+    }
+    
+    
     
     
     

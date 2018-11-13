@@ -18,6 +18,11 @@ package capaDominio;
         private int HoraFi;
         private Dia dia;   
     
+        public boolean equals(FranjaHoraria FH){
+            return FH.getDia() == dia && FH.getHoraFi() == HoraFi
+                    && FH.getHoraIni() == HoraIni;
+        } 
+        
         public FranjaHoraria(Integer horaIni, Integer horaFi, Dia dia) {
             this.HoraIni = horaIni;
             this.HoraFi = horaFi;
@@ -34,6 +39,10 @@ package capaDominio;
         
         public Dia getDia(){
             return dia;
+        }
+        
+         public int unificar_values(){
+            return (dia.ordinal() * 12 + (HoraIni - 8));
         }
         
     }

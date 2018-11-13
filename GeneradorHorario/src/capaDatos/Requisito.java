@@ -26,6 +26,24 @@ public class Requisito {
         this.tipoR = tipoR;
         this.mats = mats;
     }
+
+    public TipoR getTipoR() {
+        return tipoR;
+    }
+
+    public void setTipoR(TipoR tipoR) {
+        this.tipoR = tipoR;
+    }
+
+    public ArrayList<Materia> getMats() {
+        return mats;
+    }
+
+    public void setMats(ArrayList<Materia> mats) {
+        this.mats = mats;
+    }
+    
+    
     
     
 }

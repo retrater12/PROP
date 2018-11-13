@@ -14,7 +14,8 @@ package capaDatos;
 public class Asignatura {
 
     public int gethoraClase() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return horaClase;
     }
     
      public enum TipusClase {
@@ -27,6 +28,11 @@ public class Asignatura {
     private int capacidad;
     private int horaClase; 
     
+    public boolean equals(Asignatura A){
+        return A.getMat().equals(mat) && A.getTipusClase() == tipusClase &&
+                A.getGrupo() == grupo && A.getCapacidad() == capacidad && A.gethoraClase() == horaClase;
+    }
+    
     public Asignatura(Materia mat, int grupo, TipusClase tipusClase, int capacidad, int horaClase){
         this.mat = mat;
         this.grupo = grupo;
@@ -34,6 +40,50 @@ public class Asignatura {
         this.capacidad = capacidad;
         this.horaClase = horaClase;
     }
-    
+
+    public Materia getMat() {
+        return mat;
+    }
+
+    public void setMat(Materia mat) {
+        this.mat = mat;
+    }
+
+    public int getGrupo() {
+        return grupo;
+    }
+
+    public void setGrupo(int grupo) {
+        this.grupo = grupo;
+    }
+
+    public TipusClase getTipusClase() {
+        return tipusClase;
+    }
+
+    public void setTipusClase(TipusClase tipusClase) {
+        this.tipusClase = tipusClase;
+    }
+
+    public int getCapacidad() {
+        return capacidad;
+    }
+
+    public void setCapacidad(int capacidad) {
+        this.capacidad = capacidad;
+    }
+
+    public int getHoraClase() {
+        return horaClase;
+    }
+
+    public void setHoraClase(int horaClase) {
+        this.horaClase = horaClase;
+    }
+
+    @Override
+    public String toString() {
+        return "Asignatura{" + "mat=" + mat + ", grupo=" + grupo + ", tipusClase=" + tipusClase + ", capacidad=" + capacidad + ", horaClase=" + horaClase + '}';
+    }
     
 }
