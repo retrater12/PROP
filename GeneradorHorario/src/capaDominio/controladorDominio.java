@@ -6,6 +6,7 @@
 package capaDominio;
 
 import capaDatos.Asignatura;
+import java.io.IOException;
 //import capaDominio.FranjaHoraria.Dia;
 import java.util.ArrayList;
 
@@ -37,13 +38,13 @@ public class controladorDominio {
         }
     };
     
-    public controladorDominio() {
+    public controladorDominio() throws IOException {
         System.out.println("CARGADO CONTROLADOR DOMINIO");
         gestionDatos2 = new capaDatos.GestionDatos();
         CJTA = new capaDominio.CjtAsignaciones();
     }
     
-    private FranjaHoraria.Dia Dia_semana(int dia){
+    public FranjaHoraria.Dia Dia_semana(int dia){
         
         if (dia == 0) return FranjaHoraria.Dia.LUNES;
         else if (dia == 1) return FranjaHoraria.Dia.MARTES;

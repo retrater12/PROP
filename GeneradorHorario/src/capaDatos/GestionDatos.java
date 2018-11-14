@@ -9,6 +9,8 @@ package capaDatos;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 
 
@@ -21,11 +23,11 @@ public class GestionDatos {
     
     private ArrayList<Asignatura> cjt_asignatures;
     private ArrayList<Aula> cjt_aules;
-
+    private String archivo;
     
-    public GestionDatos() {
+    public GestionDatos() throws IOException {
         cargar_Asignatures();
-        cargar_Aules();
+        cargar_Aules();    
     }
   
     
@@ -35,7 +37,7 @@ public class GestionDatos {
         FileReader fr = null;
         BufferedReader br = null;
         try {
-            prueba = new File("ArchivosExternos/asig.txt");
+            prueba = new File("ArchivosExternos/Asignaturas"+archivo+".txt");
             fr = new FileReader(prueba);
             br = new BufferedReader(fr);
             ArrayList<Materia> m = new ArrayList<Materia>();
@@ -120,7 +122,7 @@ public class GestionDatos {
         FileReader fr = null;
         BufferedReader br = null;
         try {
-            prueba = new File("ArchivosExternos/Aules.txt");
+            prueba = new File("ArchivosExternos/Aules"+archivo+".txt");
             fr = new FileReader(prueba);
             br = new BufferedReader(fr);
             
