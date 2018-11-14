@@ -3,12 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/usuario/Desktop/UNI/GeneradorHorario/src/capaDominio/FranjaHoraria.java</file>
-            <file>file:/C:/Users/usuario/Desktop/UNI/GeneradorHorario/src/capaDatos/Aula.java</file>
-            <file>file:/C:/Users/usuario/Desktop/UNI/GeneradorHorario/src/capaDominio/Asignacion.java</file>
-            <file>file:/C:/Users/usuario/Desktop/UNI/GeneradorHorario/src/capaDominio/controladorDominio.java</file>
-            <file>file:/C:/Users/usuario/Desktop/UNI/GeneradorHorario/src/capaDominio/CjtAsignaciones.java</file>
-            <file>file:/C:/Users/usuario/Desktop/UNI/GeneradorHorario/src/capaDominio/Restricciones.java</file>
+            <file>file:/C:/Users/Victor/Documents/NetBeansProjects/PROP/PROP-master/PROP-master/GeneradorHorario/src/capaDominio/Asignacion.java</file>
+            <file>file:/C:/Users/Victor/Documents/NetBeansProjects/PROP/PROP-master/PROP-master/GeneradorHorario/src/testDominio/RestriccionesTest.java</file>
+            <file>file:/C:/Users/Victor/Documents/NetBeansProjects/PROP/PROP-master/PROP-master/GeneradorHorario/src/capaDatos/Asignatura.java</file>
+            <file>file:/C:/Users/Victor/Documents/NetBeansProjects/PROP/PROP-master/PROP-master/GeneradorHorario/src/capaDominio/Restricciones.java</file>
+            <file>file:/C:/Users/Victor/Documents/NetBeansProjects/PROP/PROP-master/PROP-master/GeneradorHorario/src/testDatos/AsignaturaTest.java</file>
+            <file>file:/C:/Users/Victor/Documents/NetBeansProjects/PROP/PROP-master/PROP-master/GeneradorHorario/src/testDominio/AsignacionTest.java</file>
+            <file>file:/C:/Users/Victor/Documents/NetBeansProjects/PROP/PROP-master/PROP-master/GeneradorHorario/src/capaDominio/CjtAsignaciones.java</file>
         </group>
     </open-files>
 </project-private>
