@@ -13,6 +13,11 @@ import java.util.ArrayList;
  */
 public class Materia {
 
+    public Materia() {
+        reqs = new ArrayList<Requisito>();
+    
+    }
+
     public enum Especialitat {
         Computació, EnginyeriaComputadors, EnginyeriaSoftware, SistemesInformació, TecnologiesInformació
     }
@@ -23,7 +28,18 @@ public class Materia {
      private Especialitat especialitat; //if nivel < 3, especialitat = null
      private ArrayList<Requisito> reqs;
 
+    public Especialitat getEspecialitat() {
+        return especialitat;
+    }
+     public String getNom() {
+        return nom;
+    }
      
+     public boolean equals(Materia M){
+         return M.getNom().equals(nom) && M.getSiglas().equals(siglas) &&
+                 M.getNivel() == nivel && M.getEspecialitat() == especialitat
+                 && M.getReqs().equals(reqs);
+     }
      
      
     public Materia(String nom, String siglas, int nivel) {
@@ -54,5 +70,19 @@ public class Materia {
     }
     //Pre: cert
     //post: devuelve siglas
+    
+    public int getNivel(){
+        return nivel;
+    }
+    
+    public ArrayList<Requisito> getReqs(){
+        return reqs;
+    }
+
+    @Override
+    public String toString() {
+        return "Materia{" + "nom=" + nom + ", siglas=" + siglas + ", nivel=" + nivel + ", especialitat=" + especialitat + ", reqs=" + reqs + '}';
+    }
      
+    
 }

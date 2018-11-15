@@ -22,8 +22,10 @@ public class GestionDatos {
     private ArrayList<Asignatura> cjt_asignatures;
     private ArrayList<Aula> cjt_aules;
 
+    private String datos;
     
-    public GestionDatos() {
+    public GestionDatos(String datos) {
+        this.datos = datos;
         cargar_Asignatures();
         cargar_Aules();
     }
@@ -35,17 +37,13 @@ public class GestionDatos {
         FileReader fr = null;
         BufferedReader br = null;
         try {
-            prueba = new File("ArchivosExternos/Assignatures.txt");
+            prueba = new File("ArchivosExternos/" + datos + "/Materies.txt");
             fr = new FileReader(prueba);
             br = new BufferedReader(fr);
             ArrayList<Materia> m = new ArrayList<Materia>();
-            String linea;
-            boolean bucle_acabat = false;
-            
+            String linea;            
             //Lectura Materias
-            while(!bucle_acabat && (linea=br.readLine()) != null) {
-                if (linea.charAt(0) == '-') bucle_acabat = true;
-                else {
+            while((linea=br.readLine()) != null) {
                     int aux = linea.indexOf("-", 0);
                     int aux2 = linea.indexOf("-", aux+1);
                     int nivel = Integer.parseInt(linea.substring(aux2+1, aux2+2));
@@ -56,14 +54,13 @@ public class GestionDatos {
                         String esp = linea.substring(aux2+3);
                         m.get(m.size() - 1).setEspecialitat(string_to_especialitat(esp)); //especialitat
                     }
-                }
             }
 
             //Lectura Asignaturas
-            bucle_acabat = false;
-            while(!bucle_acabat && (linea=br.readLine()) != null) {
-                if (linea.charAt(0) == '-') bucle_acabat = true;
-                else {
+            prueba = new File("ArchivosExternos/" + datos + "/Assignatures.txt");
+            fr = new FileReader(prueba);
+            br = new BufferedReader(fr);         
+            while((linea=br.readLine()) != null) {
                      int aux = linea.indexOf("-", 0);
                      int aux2 = linea.indexOf("-", aux+1);
                      int aux3 = linea.indexOf("-", aux2+3);
@@ -72,14 +69,13 @@ public class GestionDatos {
                                                                     char_to_tipusClase(linea.substring(aux2+1, aux2+2).charAt(0)),  //TipusClase
                                                                     Integer.parseInt(linea.substring(aux2+3, aux3)), //Capacidad
                                                                     Integer.parseInt(linea.substring(aux3+1, aux3+2))));    //horaClase
-                }
             }
             
             //Lectura Requisitos
-            bucle_acabat = false;
-            while(!bucle_acabat && (linea=br.readLine()) != null) {
-                if (linea.charAt(0) == '-') bucle_acabat = true;
-                else {
+            prueba = new File("ArchivosExternos/" + datos + "/Requisits.txt");
+            fr = new FileReader(prueba);
+            br = new BufferedReader(fr);    
+            while((linea=br.readLine()) != null) {
                     ArrayList<Materia> mats = new ArrayList<Materia>();
                     int aux = linea.indexOf("(", 0);
                     int aux2 = linea.indexOf("-", aux+1);
@@ -95,7 +91,6 @@ public class GestionDatos {
                     for (int i = 0; i < mats.size(); i++){
                         mats.get(i).setRequisito(req);
                     }
-                }
             }
             
             
@@ -120,7 +115,7 @@ public class GestionDatos {
         FileReader fr = null;
         BufferedReader br = null;
         try {
-            prueba = new File("ArchivosExternos/Aules.txt");
+            prueba = new File("ArchivosExternos/" + datos + "/Aules.txt");
             fr = new FileReader(prueba);
             br = new BufferedReader(fr);
             
@@ -151,7 +146,7 @@ public class GestionDatos {
 
     
        
-/* MÉTODOS PRIVADOS */
+    
     private Asignatura.TipusClase char_to_tipusClase(char c){
         if (c == 'T') return Asignatura.TipusClase.T;
         if (c == 'P') return Asignatura.TipusClase.P;
@@ -184,19 +179,22 @@ public class GestionDatos {
         }        
         return null;
     }
+            
     //pre: existeix una materia en m amb les sigles passades per parametre
     //post: retorna la materia que te com a clau primaria siglas
-
     
-    
-/* METODOS PUBLICOS */
-    public ArrayList<Asignatura> getAsignaturas(){
+    public ArrayList<Asignatura> getcjt_asignatures(){
         return cjt_asignatures;
     }
+
+    public ArrayList<Aula> getcjt_aules(){
+        return cjt_aules;
+    }
+
+    @Override
+    public String toString() {
+        return "GestionDatos{" + "cjt_aules=" + cjt_aules + '}';
+    }
     
-   public ArrayList<Aula> getAules(){
-       return cjt_aules;
-   }
-
-
+    
 }
