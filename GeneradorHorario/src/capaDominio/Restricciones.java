@@ -24,19 +24,19 @@ public class Restricciones {
         return a1.getFranja() == a2.getFranja();
     }*/
     
-    private boolean compartenTipo(capaDatos.Asignatura a1, capaDatos.Aula a2){
+    public boolean compartenTipo(capaDatos.Asignatura a1, capaDatos.Aula a2){
         return a1.getTipusClase()==a2.getTipusClase();
     }
     
-    private boolean capacidadValida(capaDatos.Asignatura a1, capaDatos.Aula a2){
+    public boolean capacidadValida(capaDatos.Asignatura a1, capaDatos.Aula a2){
         return a1.getCapacidad()<=a2.getCapacidad();
     }
     
-    private boolean tienenDistintoNivel(capaDatos.Asignatura a1, capaDatos.Asignatura a2){
+    public boolean tienenDistintoNivel(capaDatos.Asignatura a1, capaDatos.Asignatura a2){
         return a1.getMat().getNivel() != a2.getMat().getNivel() || a1.getMat()== a2.getMat();
     }
     
-    private boolean esCorequisito(capaDatos.Asignatura a1, capaDatos.Asignatura a2){
+    public boolean esCorequisito(capaDatos.Asignatura a1, capaDatos.Asignatura a2){
         boolean esCoreq = false;
         ArrayList<capaDatos.Requisito> auxReq = a1.getMat().getReqs();
         ArrayList<capaDatos.Materia> auxMat = null;
@@ -50,7 +50,7 @@ public class Restricciones {
         return esCoreq;
     }
     
-    private boolean pertMismoGrupo(capaDatos.Asignatura a1, capaDatos.Asignatura a2){
+    public boolean pertMismoGrupo(capaDatos.Asignatura a1, capaDatos.Asignatura a2){
         return a1.getMat().getSiglas() == a2.getMat().getSiglas() && 
                 (((int)a1.getGrupo()/10 == (int)a2.getGrupo()/10) ||  (a1.getGrupo()%10==0 && a2.getGrupo()%10==0) )&&
                 (a1.getGrupo()%10==a2.getGrupo()%10 || 

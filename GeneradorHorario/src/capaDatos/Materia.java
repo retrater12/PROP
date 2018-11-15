@@ -13,6 +13,11 @@ import java.util.ArrayList;
  */
 public class Materia {
 
+    public Materia() {
+        reqs = new ArrayList<Requisito>();
+    
+    }
+
     public enum Especialitat {
         Computació, EnginyeriaComputadors, EnginyeriaSoftware, SistemesInformació, TecnologiesInformació
     }

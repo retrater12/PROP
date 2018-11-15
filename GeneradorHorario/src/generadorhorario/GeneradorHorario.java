@@ -7,10 +7,7 @@
 
 package generadorhorario;
 
-import capaDominio.Asignacion;
-import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Map;
 import testDominio.AsignacionTest;
 
@@ -27,9 +24,9 @@ public class GeneradorHorario {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) throws IOException {
-        
-        capaDominio.controladorDominio control = new capaDominio.controladorDominio();
+    public static void main(String[] args) {
+
+        capaDominio.controladorDominio control = new capaDominio.controladorDominio(args[0]);
         
         mostrar_horario_por_pantalla(control.Generar());
         
@@ -58,7 +55,7 @@ public class GeneradorHorario {
                 for (int dia = 0; dia < 5; dia++){
                     if (m.containsKey(dia*12 + hora) && m.get(dia*12 + hora).size() > i){
                         System.out.print("          ");
-                        Asignacion a = m.get(dia*12 + hora).get(i);
+                        capaDominio.Asignacion a = m.get(dia*12 + hora).get(i);
                         aux_mostrar_horario_por_pantalla(a);
                         acabat = false;
                     }
@@ -70,7 +67,7 @@ public class GeneradorHorario {
     }
     
     
-    private static void aux_mostrar_horario_por_pantalla(Asignacion a){
+    private static void aux_mostrar_horario_por_pantalla(capaDominio.Asignacion a){
         System.out.print(a.getAsignatura().getMat().getSiglas() + " " + a.getAsignatura().getGrupo() + " " + a.getAsignatura().getTipusClase() + " [" + a.getAula().getCodigo() + "]");
     }
     
