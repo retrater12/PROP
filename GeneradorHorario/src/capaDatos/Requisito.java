@@ -13,6 +13,8 @@ import java.util.ArrayList;
  * @author Alberto
  */
 public class Requisito {
+
+    public Requisito() {}
     
      public enum TipoR {
         pre, co

@@ -41,8 +41,27 @@ package capaDominio;
             return dia;
         }
         
-         public int unificar_values(){
+        public int unificar_values(){
             return (dia.ordinal() * 12 + (HoraIni - 8));
         }
-        
+         
+        public boolean seguentHora(){
+            if (HoraFi >= 19) {
+                if (dia == Dia.VIERNES) return false;
+                seguentDia();
+            } else {
+                HoraIni++;
+                HoraFi++;
+            }
+            return true;
+        }
+            
+        private void seguentDia(){
+            if (dia == Dia.LUNES) dia = Dia.MARTES;
+            else if (dia == Dia.MARTES) dia = Dia.MIERCOLES;
+            else if (dia == Dia.MIERCOLES) dia = Dia.JUEVES;
+            else if (dia == Dia.JUEVES) dia = Dia.VIERNES;            
+            HoraFi = 8 + (HoraFi-HoraIni);
+            HoraIni = 8;
+        }
     }

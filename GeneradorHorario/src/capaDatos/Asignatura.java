@@ -13,10 +13,10 @@ package capaDatos;
  */
 public class Asignatura {
 
-    public int gethoraClase() {
-//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-        return horaClase;
+    public Asignatura() {
+        
     }
+
     
      public enum TipusClase {
         T, L, P
@@ -30,7 +30,7 @@ public class Asignatura {
     
     public boolean equals(Asignatura A){
         return A.getMat().equals(mat) && A.getTipusClase() == tipusClase &&
-                A.getGrupo() == grupo && A.getCapacidad() == capacidad && A.gethoraClase() == horaClase;
+                A.getGrupo() == grupo && A.getCapacidad() == capacidad && A.getHoraClase() == horaClase;
     }
     
     public Asignatura(Materia mat, int grupo, TipusClase tipusClase, int capacidad, int horaClase){
@@ -80,10 +80,6 @@ public class Asignatura {
     public void setHoraClase(int horaClase) {
         this.horaClase = horaClase;
     }
-
-    @Override
-    public String toString() {
-        return "Asignatura{" + "mat=" + mat + ", grupo=" + grupo + ", tipusClase=" + tipusClase + ", capacidad=" + capacidad + ", horaClase=" + horaClase + '}';
-    }
+    
     
 }
