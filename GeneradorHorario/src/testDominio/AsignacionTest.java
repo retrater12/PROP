@@ -88,7 +88,7 @@ public class AsignacionTest {
         else System.out.println("Error");
     }
     
-   /* public static void main(String[] args){
+   public static void main(String[] args){
         AsignacionTest AT = new AsignacionTest();
         AT.testgetAsignatura();
         AT.testsetAsignatura();
@@ -96,7 +96,7 @@ public class AsignacionTest {
         AT.testsetAula();
         AT.testgetFranjaHoraria();
         AT.testsetFranjaHoraria();
-    }*/
+    }
 }
 
 
