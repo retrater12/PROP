@@ -9,45 +9,56 @@ package capaDatos;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
 import java.util.ArrayList;
 
 
 /**
  *
- * @author Sergi
+ * @author Sergi Aragall
  */
 public class GestionDatos { 
     
-    
+    /**
+     * Arraylist que conte totes les asignatures posibles per generar l'horari.
+     */
     private ArrayList<Asignatura> cjt_asignatures;
+    /**
+     * Arraylist amb totes les aules disponibles per asignarlis diferents asignatures a cada hora i dia.
+     */
     private ArrayList<Aula> cjt_aules;
-    private String archivo;
+/**
+ * Variable utilitzada per obrir l'arxiu corresponent i carregar l'horari amb el nom desitjat.
+ */
+    private String datos;
     
-    public GestionDatos() throws IOException {
+    /**
+     * Constructora de GestionDatos, encarregada de carregar els arxius que contenen tota la informacio necessaria
+     * per generar l'horari. (Asignatures, Materies, Aules i Requisits
+     * @param datos Variable d'entrada utilitzada per saber quins arxius s'han de carregar.
+     */
+    public GestionDatos(String datos) {
+        this.datos = datos;
         cargar_Asignatures();
-        cargar_Aules();    
+        cargar_Aules();
     }
   
-    
+    /**
+     * Funcio encarregada de carregar totes las asignatures del arxiu trobat dins la carpeta amb nom igual que la variable "datos".
+     * Per tal de carregarles tambe es necessari llegir i carregar els altres arxius adicionals, Materia i Requisits.
+     */
     private void cargar_Asignatures(){
         cjt_asignatures = new ArrayList<Asignatura>();
         File prueba = null;
         FileReader fr = null;
         BufferedReader br = null;
         try {
-            prueba = new File("ArchivosExternos/Asignaturas"+archivo+".txt");
+            prueba = new File("ArchivosExternos/" + datos + "/Materies.txt");
             fr = new FileReader(prueba);
             br = new BufferedReader(fr);
             ArrayList<Materia> m = new ArrayList<Materia>();
-            String linea;
-            boolean bucle_acabat = false;
-            
+            String linea;            
             //Lectura Materias
-            while(!bucle_acabat && (linea=br.readLine()) != null) {
-                if (linea.charAt(0) == '-') bucle_acabat = true;
-                else {
+            while((linea=br.readLine()) != null) {
                     int aux = linea.indexOf("-", 0);
                     int aux2 = linea.indexOf("-", aux+1);
                     int nivel = Integer.parseInt(linea.substring(aux2+1, aux2+2));
@@ -58,14 +69,13 @@ public class GestionDatos {
                         String esp = linea.substring(aux2+3);
                         m.get(m.size() - 1).setEspecialitat(string_to_especialitat(esp)); //especialitat
                     }
-                }
             }
 
             //Lectura Asignaturas
-            bucle_acabat = false;
-            while(!bucle_acabat && (linea=br.readLine()) != null) {
-                if (linea.charAt(0) == '-') bucle_acabat = true;
-                else {
+            prueba = new File("ArchivosExternos/" + datos + "/Assignatures.txt");
+            fr = new FileReader(prueba);
+            br = new BufferedReader(fr);         
+            while((linea=br.readLine()) != null) {
                      int aux = linea.indexOf("-", 0);
                      int aux2 = linea.indexOf("-", aux+1);
                      int aux3 = linea.indexOf("-", aux2+3);
@@ -74,14 +84,13 @@ public class GestionDatos {
                                                                     char_to_tipusClase(linea.substring(aux2+1, aux2+2).charAt(0)),  //TipusClase
                                                                     Integer.parseInt(linea.substring(aux2+3, aux3)), //Capacidad
                                                                     Integer.parseInt(linea.substring(aux3+1, aux3+2))));    //horaClase
-                }
             }
             
             //Lectura Requisitos
-            bucle_acabat = false;
-            while(!bucle_acabat && (linea=br.readLine()) != null) {
-                if (linea.charAt(0) == '-') bucle_acabat = true;
-                else {
+            prueba = new File("ArchivosExternos/" + datos + "/Requisits.txt");
+            fr = new FileReader(prueba);
+            br = new BufferedReader(fr);    
+            while((linea=br.readLine()) != null) {
                     ArrayList<Materia> mats = new ArrayList<Materia>();
                     int aux = linea.indexOf("(", 0);
                     int aux2 = linea.indexOf("-", aux+1);
@@ -97,7 +106,6 @@ public class GestionDatos {
                     for (int i = 0; i < mats.size(); i++){
                         mats.get(i).setRequisito(req);
                     }
-                }
             }
             
             
@@ -113,16 +121,18 @@ public class GestionDatos {
             }
         }
     }
-    //carga Asignatures.txt y crea todas las Asignaturas, Materias y requisitos
-    
-    
+ 
+    /**
+     * Funcio encarregada de llegir i carregar les aules trobades dins la carpeta amb nom igual que la variable "datos".
+     * 
+     */
     private void cargar_Aules(){ 
         cjt_aules = new ArrayList<Aula>();
         File prueba = null;
         FileReader fr = null;
         BufferedReader br = null;
         try {
-            prueba = new File("ArchivosExternos/Aules"+archivo+".txt");
+            prueba = new File("ArchivosExternos/" + datos + "/Aules.txt");
             fr = new FileReader(prueba);
             br = new BufferedReader(fr);
             
@@ -148,21 +158,27 @@ public class GestionDatos {
             }
         }
     }
-    //carga Aules.txt y crea todas las Aulas
+
     
 
     
        
-    
+    /**
+     * Funcio utilitzada per transformar un char a un TipusClase, enumeracio definida previament a Asignatura.
+     * @param c Tres posibles valors T, L o P  
+     * @return Retorna el corresponent TipusClase per els diferents valors de c.
+     */
     private Asignatura.TipusClase char_to_tipusClase(char c){
         if (c == 'T') return Asignatura.TipusClase.T;
         if (c == 'P') return Asignatura.TipusClase.P;
         return Asignatura.TipusClase.L;
     }
-    //pre: c = T,P o L
-    //post: transforma el char c a tipusClase
-    
-    
+ 
+    /**
+     * Funcio utilitzada per transformar uns String a una especialitat.
+     * @param esp Pot ser una de les 5 especialitats existents "COMPUTACIO", "ENGINYERIACOMPUTADORS", "ENGINYERIASOFTWARE", "SISTEMESINFORMACIO" o "TECNOLOGIESINFORMACIO".
+     * @return Retorna la corresponent Especialitat(enumeracio d'una Materia) per el valor de l'entrada esp.
+     */
     private Materia.Especialitat string_to_especialitat(String esp){
         if ("COMPUTACIO".equals(esp)) return Materia.Especialitat.Computació;
         if ("ENGINYERIACOMPUTADORS".equals(esp)) return Materia.Especialitat.EnginyeriaComputadors;
@@ -170,16 +186,22 @@ public class GestionDatos {
         if ("SISTEMESINFORMACIO".equals(esp)) return Materia.Especialitat.SistemesInformació;
         return Materia.Especialitat.TecnologiesInformació;   //"TECNOLOGIESINFORMACIO"
     }
-    //pre: esp = "COMPUTACIO", "ENGINYERIACOMPUTADORS", "ENGINYERIASOFTWARE", "SISTEMESINFORMACIO" o "TECNOLOGIESINFORMACIO"
-    //post: transforma el string esp a Especialitat
-    
+
+    /**
+     * Funcio utilitzada per transformar un int cap a un tipos TipoR, utilitzat per la clase Requisito.
+     * @param aux Valor que es vol transformar (si es 3 es igual a prerrequisit, y si no es un correquisit), fa referencia al numero de lletres del requisit, pre = 3 lletres.
+     * @return Retorna el valor d'entrada convertit en TipoR.
+     */
     private Requisito.TipoR int_to_tipoR(int aux){
         if (aux == 3) return Requisito.TipoR.pre;
         else return Requisito.TipoR.co;
     }
-    //pre: aux = 3 o 2, hace referencia al número de letras, es decir pre 3 y co 2
-    //post: devuelve el tipoR especificado
-    
+    /**
+     * Funcio que retorna una Materia i aquesta es troba dins d'un Arraylist. Busca una Materia, aquesta ha de ser-hi.
+     * @param m Arraylist amb Materies.
+     * @param siglas Valor de les sigles de la Materia que es vol buscar.
+     * @return Retorna la Materia que te com a sigles sigles. Aquesta es unica.
+     */
     private Materia getMateria(ArrayList<Materia> m, String siglas){
         for (int i = 0; i < m.size(); i++){
             if (m.get(i).getSiglas().equals(siglas)) return m.get(i);
@@ -187,13 +209,17 @@ public class GestionDatos {
         return null;
     }
             
-    //pre: existeix una materia en m amb les sigles passades per parametre
-    //post: retorna la materia que te com a clau primaria siglas
-    
+    /**
+     * Funcio per obtenir l'Arraylist amb les asignatures.
+     * @return Retorna el Arraylist amb totes les asignatures carregades, anomenat cjt_asignatures.
+     */
     public ArrayList<Asignatura> getcjt_asignatures(){
         return cjt_asignatures;
     }
-
+/**
+ * Funcio per obtemir l'Arraylist amb les Aules
+ * @return Retorna el Arraylist amb totes les Aules carregades, anomenat cjt_aules.
+ */
     public ArrayList<Aula> getcjt_aules(){
         return cjt_aules;
     }
