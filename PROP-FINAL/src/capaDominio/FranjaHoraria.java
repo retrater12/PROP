@@ -108,7 +108,7 @@ package capaDominio;
             HoraIni = 8;
         }
         
-        private Dia convert_int_to_Dia(int i) {
+        static public Dia convert_int_to_Dia(int i) {
             switch (i){
                 case 0: return Dia.LUNES;
                 case 1: return Dia.MARTES;

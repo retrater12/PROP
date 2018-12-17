@@ -39,13 +39,14 @@ public class GeneradorHorario {
      */
     public static void main(String[] args) throws IOException {
         boolean salir=false;
-        capaDominio.controladorDominio control;
+        capaDominio.controladorDominio control = null;
         while(!salir){
             Scanner sc = new Scanner(System.in);
             System.out.println("\nGENERADOR DE HORARIOS");
             System.out.println("1-Generar horario");
             System.out.println("2-Cargar horario");
-            System.out.println("3-Salir");
+            System.out.println("3-Cambiar asignatura de hora (Se ha tenido que generar y/o cargar un horario)");
+            System.out.println("4-Salir");
             System.out.println("¿Que desea hacer?");
             int opcion = sc.nextInt();
             switch (opcion){
@@ -68,7 +69,15 @@ public class GeneradorHorario {
                             }
                         }
                         break;
-                case 2: System.out.println("Que horario desea cargar?");
+                case 2: System.out.println("Que horario desea cargar? Hay los siguientes: (Escribir sin el .txt)");
+                        String ruta = "Persistencia/horarios_guardados/Asignaciones/";
+                        File carpetas = new File(ruta);
+                        if (carpetas.exists()){
+                          String[] archivos = carpetas.list();  
+                             for (String c : archivos){
+                                System.out.println(c);
+                            }
+                        }
                         String nombre = sc.next();
                         //System.out.println("Que escenario carga?");
                         //int asig2 = sc.nextInt();
@@ -78,7 +87,14 @@ public class GeneradorHorario {
                         mostrar_horario_por_pantalla(control.getCjtA());
                         
                         break;
-                case 3: salir =true;
+                case 3: int fh1, fh2;
+                        System.out.println("Escribe el fh1:");
+                        fh1 = sc.nextInt();
+                        System.out.println("Escribe el fh2:");
+                        fh2 = sc.nextInt();
+                        control.cambiar_asignacion(control.getAulas().get(0), control.getAsignaturas().get(0) , fh1, fh2);
+                        mostrar_horario_por_pantalla(control.getCjtA());
+                case 4: salir =true;
                         break;
                 default: System.out.println("Opcion no valida");
             }

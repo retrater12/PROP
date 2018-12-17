@@ -6,6 +6,7 @@
 package capaDominio;
 
 import capaDatos.Asignatura;
+import capaDatos.Aula;
 import java.io.IOException;
 //import capaDominio.FranjaHoraria.Dia;
 import java.util.ArrayList;
@@ -39,6 +40,12 @@ public class controladorDominio {
         rest = new capaDominio.Restricciones();
     }
      
+     public ArrayList<Asignatura> getAsignaturas(){
+         return gestionDatos2.getcjt_asignatures();
+     }
+     public ArrayList<Aula> getAulas(){
+         return gestionDatos2.getcjt_aules();
+     }
      /* FUERA
     
  //   private CjtAsignaciones cjtAssigs;
@@ -146,5 +153,44 @@ public class controladorDominio {
             return CJTA.cargar_horario(nombre, gestionDatos2.getcjt_asignatures(), gestionDatos2.getcjt_aules());
         }
         return false;
+    }
+    
+    public boolean mod_asignatura(){
+        return false;
+        
+    }
+    public boolean mod_aula(){
+        return false;
+        
+    }
+    public boolean mod_materia(){
+        return false;
+        
+    }
+    public boolean mod_requisits(){
+        return false;
+        
+    }
+    
+    public FranjaHoraria inttoFranjaHoraria(int fh){
+        FranjaHoraria franja = null;
+        FranjaHoraria.Dia dia = FranjaHoraria.convert_int_to_Dia(fh/12);
+        Integer  hora = fh%12 + 7;
+        franja = new FranjaHoraria(hora, dia);
+        return franja;
+    }
+    
+    public boolean cambiar_asignacion(capaDatos.Aula aula, capaDatos.Asignatura asignatura, int fh1, int fh2){
+        FranjaHoraria f1 = inttoFranjaHoraria(fh1);
+        FranjaHoraria f2 = inttoFranjaHoraria(fh2);
+        
+        System.out.println(f1.getDiaString() + "  " + f1.getHoraIni());
+        System.out.println(f2.getDiaString() + "  " + f2.getHoraIni());
+        capaDatos.Aula aux_aula = rest.Comprueba_Restricciones(asignatura, f2, CJTA, gestionDatos2.getcjt_aules()); 
+        if(aux_aula == null) return false;
+        System.out.println("Se ha encontrado aula " + aula.getCodigo());
+        CJTA.delelement(f1, aula, asignatura);
+        CJTA.addelement(f2, aula, asignatura);
+        return true;
     }
 }
